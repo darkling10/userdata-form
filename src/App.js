@@ -1,11 +1,10 @@
 import UserForm from './Components/UserForm/UserForm';
 import UserList from './Components/UserList/UserList';
 import React, { useState } from 'react';
-import './App.css';
+
 
 function App() {
   const [userData, setuserData] = useState([
-    {username:"Abbas",age:"20",id:'g1'}
   ])
 
   const addDataHandler = (usernamedata,agedata) =>{
@@ -15,7 +14,7 @@ function App() {
       return updateData;
     })
   }
-  
+
   return (
     <div className="App">
       <UserForm onAdddata={addDataHandler}/>
