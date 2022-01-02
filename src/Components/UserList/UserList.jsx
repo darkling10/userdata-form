@@ -1,17 +1,18 @@
 import React from 'react'
-import UserListItem from '../UserListItem/UserListItem';
+import Card from '../UI/Card'
+import classes from './UserList.module.css'
+
 const UserList = (props) => {
     return (
-        <div>
-            <ul className='data-Container'>
-                {props.data.map(item =>(
-                    <UserListItem key={item.id}
-                        username={item.username}
-                        age={item.age}                    
-                    />
+        <Card className={classes.users}>
+            <ul >
+                {props.data.map(user =>(
+                   <li key={user.id}>
+                    {user.username} ({user.age} years old)
+                  </li>
                 ))}
             </ul>
-        </div>
+        </Card>
     )
 }
 
