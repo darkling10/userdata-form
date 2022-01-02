@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import UserForm from './Components/UserForm/UserForm';
+import UserList from './Components/UserList/UserList';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [userData, setuserData] = useState([
+    {username:"Abbas",age:"20",id:'g1'}
+  ])
+
+  const addDataHandler = (usernamedata,agedata) =>{
+    setuserData(prevData =>{
+      const updateData =[...prevData]
+      updateData.unshift({username:usernamedata ,age:agedata,id:Math.random().toString()})
+      return updateData;
+    })
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UserForm onAdddata={addDataHandler}/>
+      <UserList data={userData}/>
     </div>
   );
 }
